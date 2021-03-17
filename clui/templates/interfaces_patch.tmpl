@@ -1,0 +1,47 @@
+{{template "_head" .}}
+<div class="user signup">
+	<div class="ui middle very relaxed page grid">
+        <div class="column" >
+            <form class="ui form" action="{{.Link}}" method="post">
+                <h3 class="ui top attached header">
+                    {{.i18n.Tr "Update Interface"}}
+                </h3>
+                <div class="ui attached segment">
+                    <div class="required inline field">
+                        <label for="name">{{.i18n.Tr "Name"}}</label>
+                        <input id="name" name="name" value="{{ .Interface.Name }}" required>
+                    </div>
+                    <div class="required inline field">
+                        <label for="address">{{.i18n.Tr "IP Address"}}</label>
+                        <input id="address" name="address" value="{{ .Interface.Address.Address }}" disabled>
+                    </div>
+                    <div class="required inline field">
+                        <label for="macaddr">{{.i18n.Tr "Mac Address"}}</label>
+                        <input id="macaddr" name="macaddr" value="{{ .Interface.MacAddr }}" disabled>
+                    </div>
+                    <div class="required inline field">
+                        <label for="pairs">{{.i18n.Tr "Allow Address Pairs"}}</label>
+                        <input id="pairs" name="pairs" value="{{ .Interface.AddrPairs }}" placeholder="10.10.10.100-52:54:02:03:04:08">
+                    </div>
+                    <div class="inline field">
+                        <label for="secgroups">{{.i18n.Tr "Security Groups"}}</label>
+                        <select name="secgroups" id="secgroups" multiple="" class="ui multiple selection dropdown">
+			   {{ range .Interface.Secgroups }}
+                              <option value="{{ .ID }}" selected>{{ .ID }}-{{ .Name }}</option>
+                           {{ end }}
+			   {{ range .Secgroups }}
+                              <option value="{{ .ID }}">{{ .ID }}-{{ .Name }}</option>
+                           {{ end }}
+                        </select>
+		    </div>
+                    <div class="inline field">
+                        <label></label>
+                        <button class="ui green button">{{.i18n.Tr "Update Interface"}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+	</div>
+</div>
+{{template "_footer" .}}
+

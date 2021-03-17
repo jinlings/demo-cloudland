@@ -1,0 +1,50 @@
+<div class="four wide column">
+    <div class="ui vertical menu">
+        <div class="header item">{{.i18n.Tr "Authorizations"}}</div>
+        <a {{ if eq .Link "/users" }} class="active item" {{ else }} class="item" {{ end }} href="/users">
+            {{.i18n.Tr "Users"}}
+        </a>
+        <a {{ if eq .Link "/orgs" }} class="active item" {{ else }} class="item" {{ end }} href="/orgs">
+            {{.i18n.Tr "Organizations"}}
+        </a>
+        <a {{ if eq .Link "/keys" }} class="active item" {{ else }} class="item" {{ end }} href="/keys">
+            {{.i18n.Tr "Keys"}}
+        </a>
+        <div class="header item">{{.i18n.Tr "Compute_Storage"}}</div>
+        <a {{ if eq .Link "/instances" }} class="active item" {{ else }} class="item" {{ end }} href="/instances">
+            {{.i18n.Tr "Instances"}}
+        </a>
+        <a {{ if eq .Link "/flavors" }} class="active item" {{ else }} class="item" {{ end }} href="/flavors">
+            {{.i18n.Tr "Flavors"}}
+        </a>
+        <a {{ if eq .Link "/images" }} class="active item" {{ else }} class="item" {{ end }} href="/images">
+            {{.i18n.Tr "Images"}}
+        </a>
+        <div class="header item">{{.i18n.Tr "Platform_Service"}}</div>
+        <a {{ if eq .Link "/openshifts" }} class="active item" {{ else }} class="item" {{ end }} href="/openshifts">
+            {{.i18n.Tr "Openshift"}}
+        </a>
+        <a {{ if eq .Link "/glusterfs" }} class="active item" {{ else }} class="item" {{ end }} href="/glusterfs">
+            {{.i18n.Tr "Glusterfs"}}
+        </a>
+        <div class="header item">{{.i18n.Tr "Network_Security"}}</div>
+        <a {{ if eq .Link "/subnets" }} class="active item" {{ else }} class="item" {{ end }} href="/subnets">
+            {{.i18n.Tr "Subnets"}}
+        </a>
+        <a {{ if eq .Link "/floatingips" }} class="active item" {{ else }} class="item" {{ end }} href="/floatingips">
+            {{.i18n.Tr "FloatingIps"}}
+        </a>
+        <a {{ if eq .Link "/gateways" }} class="active item" {{ else }} class="item" {{ end }} href="/gateways">
+            {{.i18n.Tr "Gateways"}}
+        </a>
+        <a {{ if eq .Link "/secgroups" }} class="active item" {{ else }} class="item" {{ end }} href="/secgroups">
+            {{.i18n.Tr "SecurityGroups"}}
+        </a>
+		{{ if $.IsAdmin }}
+        <div class="header item">{{.i18n.Tr "Administration"}}</div>
+        <a {{ if eq .Link "/hypers" }} class="active item" {{ else }} class="item" {{ end }} href="/hypers">
+            {{.i18n.Tr "Hypers"}}
+        </a>
+		{{ end }}
+    </div>
+</div>
