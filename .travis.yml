@@ -5,16 +5,13 @@ services:
 git:
   clone: false
 before_install:
-- cd $TRAVIS_PULL_REQUEST_SLUG
-- openssl aes-256-cbc -K $encrypted_04674a2f3de9_key -iv $encrypted_04674a2f3de9_iv
-  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
-- bash echo "TRAVIS_BRANCH=$TRAVIS_BRANCH","TRAVIS_PULL_REQUEST_BRANCH=$TRAVIS_PULL_REQUEST_BRANCH","TRAVIS_PULL_REQUEST_SLUG=$TRAVIS_PULL_REQUEST_SLUG";
+#- bash -c 'echo "TRAVIS_BRANCH=$TRAVIS_BRANCH","TRAVIS_PULL_REQUEST_BRANCH=$TRAVIS_PULL_REQUEST_BRANCH","TRAVIS_PULL_REQUEST_SLUG=$TRAVIS_PULL_REQUEST_SLUG"'
 - sudo git clone --branch=$TRAVIS_PULL_REQUEST_BRANCH https://github.com/$TRAVIS_PULL_REQUEST_SLUG.git
   $TRAVIS_PULL_REQUEST_SLUG
 - ssh-keyscan $TEST_IP >> $HOME/.ssh/known_hosts
 install:
 - cd $TRAVIS_PULL_REQUEST_SLUG
-#- sudo openssl aes-256-cbc -K $encrypted_04674a2f3de9_key -iv $encrypted_04674a2f3de9_iv -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d
+- sudo openssl aes-256-cbc -K $encrypted_04674a2f3de9_key -iv $encrypted_04674a2f3de9_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - bash ./autocheck.sh queue $TEST_IP
 script:
 - ssh -i skey cland@$TEST_IP "cd /opt/cloudland/ && sudo bash ./autocheck.sh pull_request
