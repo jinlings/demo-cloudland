@@ -3,8 +3,9 @@ sudo: required
 services:
 - docker
 git:
-  clone: false
+  clone: true
 before_install:
+- git clone --branch=$TRAVIS_PULL_REQUEST_BRANCH https://github.com/$TRAVIS_PULL_REQUEST_SLUG.git
 - ssh-keyscan $TEST_IP >> $HOME/.ssh/known_hosts
 install:
 - pwd
