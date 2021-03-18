@@ -8,8 +8,7 @@ before_install:
 - ssh-keyscan $TEST_IP >> $HOME/.ssh/known_hosts
 install:
 - path=$TRAVIS_PULL_REQUEST_SLUG
-- fin_path= ${path##*/}
-- cd fin_path
+- cd demo-cloudland
 - openssl aes-256-cbc -K $encrypted_12f1486e37a0_key -iv $encrypted_12f1486e37a0_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - bash ./autocheck.sh queue $TEST_IP
