@@ -54,12 +54,12 @@ checktest(){
     sleep 2
   done
 }
-
+#check pending
 pend(){
   i=0
   while :
   do
-    status=$(ssh -i skey cland@$1 'cat /opt/test_status')
+    status=$(ssh -i ~/.ssh/skey cland@$1 'cat /opt/test_status')
     if [ "$status" == "PENDING" ]
     then
       echo $status
