@@ -9,7 +9,7 @@ before_install:
 install:
 - pwd
 - openssl aes-256-cbc -K $encrypted_12f1486e37a0_key -iv $encrypted_12f1486e37a0_iv
-  -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d
+  -in ./id_rsa.enc -out ~/.ssh/id_rsa -d
 - bash ./autocheck.sh queue $TEST_IP
 script:
 - ssh -i skey cland@$TEST_IP "cd /opt/cloudland/ && sudo bash ./autocheck.sh pull_request
