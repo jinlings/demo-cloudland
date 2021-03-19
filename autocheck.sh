@@ -54,7 +54,7 @@ checktest(){
     sleep 2
   done
 }
-#check pending
+#########check pending
 ##############################
 pend(){
   i=0
