@@ -1,11 +1,7 @@
-####~~~~#####
-####checkpr###
-##############
-############
 checkpr(){
   sudo echo "PENDING" > /opt/test_status
   BRANCHNAME=$1
-  PRSLUG=$2
+  GITURL=$2
 
   echo "Deploying new environment"
   sudo systemctl stop hypercube
@@ -16,7 +12,7 @@ checkpr(){
   sudo rm -rf ./cloudland/
   sudo rm -rf ./libvirt-console-proxy/
   sudo rm -rf ./sci/
-  sudo git clone --branch=$BRANCHNAME https://github.com/$PRSLUG.git
+  sudo git clone --branch=$BRANCHNAME $GITURL
   sudo echo "PENDING" > ./cloudland/web/clui/public/test_status
   cd /opt/cloudland/deploy/
   ./allinone.sh
