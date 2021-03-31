@@ -1,19 +1,19 @@
 checkpr(){
-  sudo echo "PENDING" > /opt/test_status
-  BRANCHNAME=$1
-  GITURL=$2
+ # sudo echo "PENDING" > /opt/test_status
+ # BRANCHNAME=$1
+ # GITURL=$2
 
-  echo "Deploying new environment"
-  sudo systemctl stop hypercube
-  sudo systemctl stop cloudland
-  sudo systemctl stop cloudlet
-  sudo systemctl stop scid
-  cd /opt/
-  sudo rm -rf ./cloudland/
-  sudo rm -rf ./libvirt-console-proxy/
-  sudo rm -rf ./sci/
-  sudo git clone --branch=$BRANCHNAME $GITURL
-  sudo echo "PENDING" > ./cloudland/web/clui/public/test_status
+  #echo "Deploying new environment"
+  #sudo systemctl stop hypercube
+  #sudo systemctl stop cloudland
+  #sudo systemctl stop cloudlet
+  #sudo systemctl stop scid
+  #cd /opt/
+  #sudo rm -rf ./cloudland/
+  #sudo rm -rf ./libvirt-console-proxy/
+  #sudo rm -rf ./sci/
+  #sudo git clone --branch=$BRANCHNAME $GITURL
+  #sudo echo "PENDING" > ./cloudland/web/clui/public/test_status
   cd /opt/cloudland/deploy/
   ./allinone.sh
   if [ $? -ne 0 ]
