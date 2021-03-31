@@ -1,6 +1,6 @@
 ####checkpr###
 ##############
-
+############
 checkpr(){
   sudo echo "PENDING" > /opt/test_status
   BRANCHNAME=$1
